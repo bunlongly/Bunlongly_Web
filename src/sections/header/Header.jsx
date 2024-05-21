@@ -59,7 +59,7 @@ const Header = () => {
             <h1 className='TypeWriter'>
               Hello, I'm <span>Bunlong Ly</span>
             </h1>
-            <TypeWriter words={['FullStack Web Developer']} wait={3000} />
+            <TypeWriter words={['Full Stack Web Developer']} wait={3000} />
             <a href='#about' className='about btn' onClick={handleScrollLink}>
               More About Me
             </a>
