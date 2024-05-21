@@ -1,0 +1,74 @@
+#floating__nav {
+  opacity: 0; /* Start initially hidden */
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease,
+    transform 0.3s ease-in-out;
+  transform: translateY(
+    20px
+  ); /* Start slightly below the final position for smooth entry */
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .main-nav {
+    display: none; /* Hide the main navigation bar on smaller screens */
+  }
+
+  #floating__nav.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  #floating__nav.hide {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(20px); /* Move slightly downward while fading out */
+  }
+
+  .scrollspy {
+    display: flex;
+    gap: 1.2rem;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.6rem 1rem;
+    border-radius: 30px;
+    backdrop-filter: blur(8px);
+  }
+
+  #floating__nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    color: white;
+    text-decoration: none;
+  }
+
+  #floating__nav span {
+    font-size: 0.75rem;
+    margin-top: 4px;
+  }
+}
+
+#floating__nav .nav-item.active a svg {
+  color: #1ba098; /* Change the color of the icon */
+}
+
+.nav-item.active a {
+    color: #1ba098; /* Example: change text color when active */
+}
+
+.nav-item a.active {
+    color: #1ba098; 
+}
+

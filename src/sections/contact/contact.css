@@ -1,0 +1,28 @@
+.contact {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 20px;
+}
+
+.contact h1 {
+  margin-bottom: 70px;
+}
+.contact .contact-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media only screen and (max-width: 768px) {
+  .contact .contact-info {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    border-top: 3px solid #1ba098;
+    padding-top: 50px;
+  }
+
+  .contact .contact-info .item {
+    margin: 20px;
+  }
+
+
+}
