@@ -5,7 +5,7 @@ export const certificatesData = [
       'A course of study offered by HarvardX, an online learning initiative of Harvard University, To obtain the certificate, students must complete six projects with passing grades. The course covers Python, Django, SQL models and migrations, JavaScript, user interfaces, testing, CI/CD, scalability, and security.',
     image: '../../../assets/certificate.jpg',
     youtubeLinks: [
-      { title: 'Project 0 | Search', url: 'https://youtu.be/s5o1T7t3-H' },
+      { title: 'Project 0 | Search', url: 'https://youtu.be/s5o1T7t3-Hs' },
       {
         title: 'Project 1 | Wiki',
         url: 'https://youtu.be/AzGtb78v-UU'

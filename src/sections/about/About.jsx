@@ -49,9 +49,11 @@ const About = () => {
 
       <div className='about-lead'>
         <p className='more-font'>
-          An enthusiast and hardworking, innovative, complex problem solver, and
-          motivated trilingual with a good interpersonal and communication
-          skill, a student with a strong desire to learn more.
+          Interested in web development, with expertise ranging from frontend
+          to backend across various programming languages in real-world
+          projects. An enthusiastic, hardworking individual with innovative
+          problem-solving skills, strong research capabilities, and a keen
+          desire to continually learn and grow.
         </p>
         {/* <p>
           <span> From : </span>
