@@ -107,7 +107,7 @@
     font-size: 1.6rem;
   }
 
-  .TypeWriter  {
+  .TypeWriter {
     font-size: 1.8rem;
     margin-bottom: 30px;
   }
@@ -123,9 +123,9 @@
     z-index: 1500;
   }
 
-  .logo img {
-    margin-left: 0px !important;
+  .header-container .logo img {
+    width: 100px;
+   
+    margin-left: 0 !important; /* Force margin-left to 0 */
   }
-
-
 }

@@ -4,7 +4,7 @@ import TypeWriter from '../../components/TypeWriter';
 
 const Header = () => {
   const [lastScrollY, setLastScrollY] = useState(window.scrollY);
-  const [navbarClass, setNavbarClass] = useState('hide');
+  const [navbarVisible, setNavbarVisible] = useState(true);
 
   const handleScrollLink = (e) => {
     e.preventDefault();
@@ -21,12 +21,13 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      if (currentScrollY < lastScrollY && currentScrollY > 100) {
-        setNavbarClass('transparent');
-      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setNavbarClass('show'); // Make the navbar visible with less transparency
-      } else if (currentScrollY <= 100) {
-        setNavbarClass('hide'); // Hide the navbar when at the top of the page
+      
+      if (currentScrollY > lastScrollY) {  // Scrolling down
+        if (currentScrollY > 100) {
+          setNavbarVisible(false);
+        }
+      } else {  // Scrolling up
+        setNavbarVisible(true);
       }
       setLastScrollY(currentScrollY);
     };
@@ -38,7 +39,7 @@ const Header = () => {
   return (
     <header className='header-container' id='home'>
       <div className='container'>
-        <div className={`main-nav navbar ${navbarClass}`}>
+        <div className={`main-nav navbar ${navbarVisible ? 'show' : 'hide'}`}>
           <div className='logo'>
             <img src='/assets/Logo/bunlong-logo.png' alt='logo' />
           </div>

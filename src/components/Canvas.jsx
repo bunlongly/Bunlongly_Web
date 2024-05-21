@@ -1,5 +1,28 @@
 import React, { useRef, useEffect } from 'react';
 
+class Point {
+    constructor(x, y, xSpeed, ySpeed) {
+        this.x = x;
+        this.y = y;
+        this.xSpeed = xSpeed;
+        this.ySpeed = ySpeed;
+    }
+
+    update(canvasWidth, canvasHeight) {
+        this.x += this.xSpeed;
+        this.y += this.ySpeed;
+        if (this.x < 0 || this.x > canvasWidth) this.xSpeed *= -1;
+        if (this.y < 0 || this.y > canvasHeight) this.ySpeed *= -1;
+    }
+
+    draw(ctx) {
+        ctx.fillStyle = 'cyan';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, 2, 0, 2 * Math.PI);
+        ctx.fill();
+    }
+}
+
 const Canvas = ({ amount = 50 }) => {
     const canvasRef = useRef(null);
     const requestId = useRef(null);
@@ -7,74 +30,53 @@ const Canvas = ({ amount = 50 }) => {
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
+        let points = [];
+        let resizeTimer;
 
         const setCanvasSize = () => {
-            const scale = window.devicePixelRatio; // Get the device's pixel ratio
+            const scale = window.devicePixelRatio;
             canvas.width = window.innerWidth * scale;
             canvas.height = window.innerHeight * scale;
             canvas.style.width = `${window.innerWidth}px`;
             canvas.style.height = `${window.innerHeight}px`;
-            ctx.scale(scale, scale); // Normalize coordinate system to use css pixels
+            ctx.scale(scale, scale);
         };
 
-        function init() {
+        const init = () => {
             if (requestId.current) {
                 cancelAnimationFrame(requestId.current);
             }
 
             setCanvasSize();
-            const points = generatePoints(amount);
-            animate(points);
-        }
+            points = generatePoints(amount);
+            animate();
+        };
 
-        function generatePoints(count) {
-            let points = [];
+        const generatePoints = (count) => {
+            const newPoints = [];
             for (let i = 0; i < count; i++) {
                 const angle = Math.random() * 2 * Math.PI;
-                points.push(new Point(
+                newPoints.push(new Point(
                     Math.random() * window.innerWidth,
                     Math.random() * window.innerHeight,
                     Math.cos(angle) * 0.5,
                     Math.sin(angle) * 0.5
                 ));
             }
-            return points;
-        }
+            return newPoints;
+        };
 
-        class Point {
-            constructor(x, y, xSpeed, ySpeed) {
-                this.x = x;
-                this.y = y;
-                this.xSpeed = xSpeed;
-                this.ySpeed = ySpeed;
-            }
-
-            update() {
-                this.x += this.xSpeed;
-                this.y += this.ySpeed;
-                if (this.x < 0 || this.x > window.innerWidth) this.xSpeed *= -1;
-                if (this.y < 0 || this.y > window.innerHeight) this.ySpeed *= -1;
-            }
-
-            draw() {
-                ctx.fillStyle = 'cyan';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, 2, 0, 2 * Math.PI);
-                ctx.fill();
-            }
-        }
-
-        function animate(points) {
+        const animate = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             points.forEach(point => {
-                point.update();
-                point.draw();
+                point.update(canvas.width, canvas.height);
+                point.draw(ctx);
             });
-            connectPoints(points);
-            requestId.current = requestAnimationFrame(() => animate(points));
-        }
+            connectPoints(ctx, points);
+            requestId.current = requestAnimationFrame(animate);
+        };
 
-        function connectPoints(points) {
+        const connectPoints = (ctx, points) => {
             points.forEach((point, index) => {
                 for (let j = index + 1; j < points.length; j++) {
                     const otherPoint = points[j];
@@ -88,13 +90,18 @@ const Canvas = ({ amount = 50 }) => {
                     }
                 }
             });
-        }
+        };
 
-        window.addEventListener('resize', init);
+        const handleResize = () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(init, 250); // Throttle resize calls
+        };
+
+        window.addEventListener('resize', handleResize);
         init();
 
         return () => {
-            window.removeEventListener('resize', init);
+            window.removeEventListener('resize', handleResize);
             if (requestId.current) {
                 cancelAnimationFrame(requestId.current);
             }

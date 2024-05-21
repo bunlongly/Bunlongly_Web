@@ -12,7 +12,7 @@ export const timelineData = [
     {
       year: 'Information',
       description: 'Personal Contact Information:',
-      detail: 'Website: https://bunlongly03.netlify.app'
+      detail: 'Website: https://bunlongly.netlify.app'
     },
     {
       year: 'Design Skills',
