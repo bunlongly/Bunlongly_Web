@@ -10,7 +10,7 @@
 
 .about-lead {
   margin-left: 30px;
-  border-left: 10px dotted #1ba098 ;
+  border-left: 10px dotted #1ba098;
   padding-left: 30px;
   margin-bottom: 70px;
 }
@@ -100,3 +100,8 @@
   opacity: 1;
 }
 
+@media only screen and (max-width: 768px) {
+  #timeline p {
+    margin-top: 30px;
+  }
+}

@@ -6,19 +6,23 @@ const Canvas = ({ amount = 50 }) => {
 
     useEffect(() => {
         const canvas = canvasRef.current;
-        canvas.style.position = 'absolute';
-        canvas.style.left = '0';
-        canvas.style.top = '0';
         const ctx = canvas.getContext('2d');
 
+        const setCanvasSize = () => {
+            const scale = window.devicePixelRatio; // Get the device's pixel ratio
+            canvas.width = window.innerWidth * scale;
+            canvas.height = window.innerHeight * scale;
+            canvas.style.width = `${window.innerWidth}px`;
+            canvas.style.height = `${window.innerHeight}px`;
+            ctx.scale(scale, scale); // Normalize coordinate system to use css pixels
+        };
+
         function init() {
-            // Clear any existing animation frame when re-initializing
             if (requestId.current) {
                 cancelAnimationFrame(requestId.current);
             }
 
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            setCanvasSize();
             const points = generatePoints(amount);
             animate(points);
         }
@@ -28,8 +32,8 @@ const Canvas = ({ amount = 50 }) => {
             for (let i = 0; i < count; i++) {
                 const angle = Math.random() * 2 * Math.PI;
                 points.push(new Point(
-                    Math.random() * canvas.width,
-                    Math.random() * canvas.height,
+                    Math.random() * window.innerWidth,
+                    Math.random() * window.innerHeight,
                     Math.cos(angle) * 0.5,
                     Math.sin(angle) * 0.5
                 ));
@@ -48,8 +52,8 @@ const Canvas = ({ amount = 50 }) => {
             update() {
                 this.x += this.xSpeed;
                 this.y += this.ySpeed;
-                if (this.x < 0 || this.x > canvas.width) this.xSpeed *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.ySpeed *= -1;
+                if (this.x < 0 || this.x > window.innerWidth) this.xSpeed *= -1;
+                if (this.y < 0 || this.y > window.innerHeight) this.ySpeed *= -1;
             }
 
             draw() {
@@ -86,10 +90,7 @@ const Canvas = ({ amount = 50 }) => {
             });
         }
 
-        // Handle window resize
         window.addEventListener('resize', init);
-
-        // Initial call to setup canvas
         init();
 
         return () => {
@@ -100,7 +101,7 @@ const Canvas = ({ amount = 50 }) => {
         };
     }, [amount]); // Effect dependencies
 
-    return <canvas ref={canvasRef} style={{ width: '100%', height: '100vh', zIndex: -1 }} />;
+    return <canvas ref={canvasRef} style={{ position: 'absolute', top: 0, left: 0, zIndex: -1 }} />;
 };
 
 export default Canvas;

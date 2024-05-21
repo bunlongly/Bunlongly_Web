@@ -72,7 +72,7 @@ const About = () => {
                   <i className='fas fa-chevron-right'></i>
                   <span> {item.year} :</span>
                 </h3>
-                <p>{item.description}</p>
+                <p className='desc'>{item.description}</p>
                 {item.detail && <p>{item.detail}</p>}
               </div>
             </li>

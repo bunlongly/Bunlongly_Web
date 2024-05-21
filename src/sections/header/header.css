@@ -2,7 +2,7 @@
 .logo img {
   width: 150px;
   margin-top: 5px;
-  margin-left: 15px;
+  margin-left: 0px;
   object-fit: cover;
 }
 
@@ -91,8 +91,6 @@
   margin-bottom: 80px;
 }
 
-
-
 .TypeWriter .text {
   display: block;
   width: 100%;
@@ -100,17 +98,20 @@
 }
 
 .about.btn {
-  margin-top: 70px;
-  margin-bottom: 40px;
+  margin-top: 60px;
+  margin-bottom: 55px;
 }
 
 @media only screen and (max-width: 768px) {
-
-  .TypeWriter .text{
-    font-size: 2rem;
+  .TypeWriter .text {
+    font-size: 1.6rem;
   }
 
-  
+  .TypeWriter  {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
   .navbar .right {
     display: none;
   }
@@ -121,4 +122,10 @@
     top: 0;
     z-index: 1500;
   }
+
+  .logo img {
+    margin-left: 0px !important;
+  }
+
+
 }

@@ -14,7 +14,7 @@ const App = () => {
   return (
     <Router>
       <main>
-        <Canvas amount={50} />
+        <Canvas amount={30} />
         <Header />
         <Routes>
           <Route
