@@ -1,5 +1,5 @@
 #floating__nav {
-  opacity: 0; /* Start initially hidden */
+  opacity: 0; 
   visibility: hidden;
   transition:
     opacity 0.3s ease,
@@ -7,7 +7,7 @@
     transform 0.3s ease-in-out;
   transform: translateY(
     20px
-  ); /* Start slightly below the final position for smooth entry */
+  ); 
   position: fixed;
   bottom: 2rem;
   left: 50%;
@@ -19,7 +19,7 @@
 
 @media screen and (max-width: 768px) {
   .main-nav {
-    display: none; /* Hide the main navigation bar on smaller screens */
+    display: none; 
   }
 
   #floating__nav.show {
@@ -61,11 +61,11 @@
 }
 
 #floating__nav .nav-item.active a svg {
-  color: #1ba098; /* Change the color of the icon */
+  color: #1ba098;
 }
 
 .nav-item.active a {
-    color: #1ba098; /* Example: change text color when active */
+    color: #1ba098; 
 }
 
 .nav-item a.active {

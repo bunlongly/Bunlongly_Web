@@ -1,9 +1,9 @@
 .project {
   position: relative;
   width: 100%;
-  max-width: 1000px; /* Adjust according to your layout */
+  max-width: 1000px; 
   margin: auto;
-  overflow: hidden; /* Hides anything outside this container */
+  overflow: hidden; 
   margin-top: 150px;
 }
 
@@ -23,7 +23,7 @@
 
 .image-container img {
   width: 100%;
-  display: block; /* Removes bottom margin/gap */
+  display: block; 
 }
 
 .buttons-container {
@@ -35,7 +35,7 @@
 .btn {
   padding: 8px 16px;
   cursor: pointer;
-  background-color: #1ba098; /* Adjust to match your site’s theme */
+  background-color: #1ba098; 
   border: none;
   color: white;
   border-radius: 5px;
@@ -43,7 +43,7 @@
 }
 
 .btn:hover {
-  background-color: #16877a; /* Darker shade for hover effect */
+  background-color: #16877a; 
 }
 
 .project-details {

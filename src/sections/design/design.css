@@ -1,9 +1,9 @@
 .design-page {
   position: relative;
   width: 100%;
-  max-width: 1000px; /* Matches project card width */
+  max-width: 1000px; 
   margin: auto;
-  overflow: hidden; /* Hides anything outside this container */
+  overflow: hidden; 
   margin-top: 150px;
   display: flex;
   flex-direction: column;

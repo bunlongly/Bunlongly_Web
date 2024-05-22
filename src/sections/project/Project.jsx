@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './project.css';
-import { projectsData } from './data'; // Make sure the path is correct
+import { projectsData } from './data';
 
 
 const Project = ({ projectId = 'proshop' }) => {
@@ -35,7 +35,7 @@ const Project = ({ projectId = 'proshop' }) => {
     };
   }, [project, index]);
 
-  if (!project) return null; // Or you could return a loading spinner or a similar indicator
+  if (!project) return null; 
 
   return (
     <div className='project' id='project'>

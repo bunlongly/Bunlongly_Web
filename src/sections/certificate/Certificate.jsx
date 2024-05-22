@@ -1,9 +1,9 @@
 import React from 'react';
 import './certificate.css';
-import { certificatesData } from './data'; // Ensure this is the correct path to your data file
+import { certificatesData } from './data'; 
 
 const Certificate = () => {
-  const cert = certificatesData[0]; // Assuming you're only displaying the first certificate
+  const cert = certificatesData[0];
 
   return (
     <div className='certificate-page' id='certificate'>

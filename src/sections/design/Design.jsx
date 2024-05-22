@@ -1,11 +1,11 @@
 import React from 'react';
 import './design.css';
-import { designData } from './data'; // Ensure the path is correct
+import { designData } from './data'; 
 
 const Design = () => {
   const project = designData.find(p => p.id === 'design');
 
-  if (!project) return null; // Or you could return a loading spinner or a similar indicator
+  if (!project) return null;  
 
   return (
     <div className='design-page'>
