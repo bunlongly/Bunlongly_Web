@@ -1,5 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate
+} from 'react-router-dom';
 import Header from '../sections/header/Header';
 import About from '../sections/about/About';
 import Project from '../sections/project/Project';
@@ -8,7 +13,7 @@ import Contact from '../sections/contact/Contact';
 import Footer from '../sections/footer/Footer';
 import Canvas from './Canvas';
 import Design from '../sections/design/Design';
-import FloatingNav from '../sections/floating-nav/FloatingNav'
+import FloatingNav from '../sections/floating-nav/FloatingNav';
 
 const App = () => {
   return (
@@ -30,10 +35,12 @@ const App = () => {
                 <Certificate />
                 <Contact />
                 <Footer />
-                <FloatingNav/>
+                <FloatingNav />
               </>
             }
           />
+
+          <Route path='*' element={<Navigate replace to='/' />} />
         </Routes>
       </main>
     </Router>

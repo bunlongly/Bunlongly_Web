@@ -11,6 +11,7 @@ class Point {
     update(canvasWidth, canvasHeight) {
         this.x += this.xSpeed;
         this.y += this.ySpeed;
+        // Reverse the velocity if it goes out of bounds
         if (this.x < 0 || this.x > canvasWidth) this.xSpeed *= -1;
         if (this.y < 0 || this.y > canvasHeight) this.ySpeed *= -1;
     }
@@ -32,13 +33,13 @@ const Canvas = ({ amount = 50 }) => {
         const ctx = canvas.getContext('2d');
         let points = [];
         let resizeTimer;
+        const scale = window.devicePixelRatio; // Define scale here for accessibility in entire effect
 
         const setCanvasSize = () => {
-            const scale = window.devicePixelRatio;
-            canvas.width = window.innerWidth * scale;
-            canvas.height = window.innerHeight * scale;
-            canvas.style.width = `${window.innerWidth}px`;
-            canvas.style.height = `${window.innerHeight}px`;
+            canvas.width = (window.innerWidth * scale) - 10;
+            canvas.height = (window.innerHeight * scale) - 10;
+            canvas.style.width = `${window.innerWidth - 5}px`; // Subtract 5px to ensure no overflow
+            canvas.style.height = `${window.innerHeight - 5}px`; // Subtract 5px to ensure no overflow
             ctx.scale(scale, scale);
         };
 
@@ -57,8 +58,8 @@ const Canvas = ({ amount = 50 }) => {
             for (let i = 0; i < count; i++) {
                 const angle = Math.random() * 2 * Math.PI;
                 newPoints.push(new Point(
-                    Math.random() * window.innerWidth,
-                    Math.random() * window.innerHeight,
+                    Math.random() * canvas.width / scale,
+                    Math.random() * canvas.height / scale,
                     Math.cos(angle) * 0.5,
                     Math.sin(angle) * 0.5
                 ));
@@ -69,7 +70,7 @@ const Canvas = ({ amount = 50 }) => {
         const animate = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             points.forEach(point => {
-                point.update(canvas.width, canvas.height);
+                point.update(canvas.width / scale, canvas.height / scale);
                 point.draw(ctx);
             });
             connectPoints(ctx, points);
@@ -109,6 +110,7 @@ const Canvas = ({ amount = 50 }) => {
     }, [amount]); // Effect dependencies
 
     return <canvas ref={canvasRef} style={{ position: 'absolute', top: 0, left: 0, zIndex: -1 }} />;
+
 };
 
 export default Canvas;

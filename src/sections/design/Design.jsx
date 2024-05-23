@@ -25,7 +25,7 @@ const Design = () => {
             rel='noopener noreferrer'
             className='download-link'
           >
-            Download PDF
+            PDF
           </a>
         </button>
       </div>

@@ -182,7 +182,7 @@ const projectsData = [
     name: 'Online Exam System',
     description:
       'Online Exam System platform built with the MERN stack. In this project, there are three roles: student, teacher, and administrator.',
-    technologies: 'Javascript, React, PHP, Laravel, MySQL ',
+    technologies: 'Javascript, Tailwind, PHP, Laravel, MySQL ',
     link: 'https://youtu.be/ZMyqeRngOBs',
 
     images: [
