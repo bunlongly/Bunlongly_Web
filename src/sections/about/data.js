@@ -16,7 +16,7 @@ export const timelineData = [
     },
     {
       year: 'Design Skills',
-      description: 'Proficient in Adobe Photoshop, Adobe Illustrator, and Figma.',
+      description: 'Adobe Photoshop, Adobe Illustrator, and Figma.',
       detail: ''
     }
   ];

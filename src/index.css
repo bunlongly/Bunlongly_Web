@@ -170,4 +170,10 @@ h1 {
     left: -15px;
     border-width: 8px 16px 8px 0;
   }
+
+  #timeline h3 {
+    display: block;
+    margin-top: 45px;
+  }
+    
 }
