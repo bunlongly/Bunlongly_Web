@@ -70,7 +70,7 @@ const About = () => {
           {timelineData.map((item, index) => (
             <li key={index} ref={el => (timelineRefs.current[index] = el)}>
               <div>
-                <h3>
+                <h3 className='year'>
                   <i className='fas fa-chevron-right'></i>
                   <span> {item.year} :</span>
                 </h3>

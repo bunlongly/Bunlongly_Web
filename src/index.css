@@ -1,5 +1,5 @@
 * {
-  box-sizing: border-box; 
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -15,8 +15,6 @@ li {
   list-style: none;
 }
 
-
-
 a {
   text-decoration: none;
   color: #fff;
@@ -26,7 +24,6 @@ hr {
   opacity: 0;
   margin-top: 160px;
 }
-
 
 h1,
 h2,
@@ -65,8 +62,6 @@ h1 {
   display: inline-block;
   transition: background-color 0.6s ease;
 }
-
-
 
 /* Fading animation */
 .fade {
@@ -151,8 +146,6 @@ h1 {
   }
 }
 
-
-
 @media only screen and (max-width: 600px) {
   #timeline ul li {
     margin-left: 20px;
@@ -171,9 +164,7 @@ h1 {
     border-width: 8px 16px 8px 0;
   }
 
-  #timeline h3 {
-    display: block;
+  #timeline .year {
     margin-top: 45px;
   }
-    
 }
